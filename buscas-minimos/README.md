@@ -6,6 +6,6 @@ Buscas e Caminhos Mínimos
   - https://www.urionlinejudge.com.br/judge/pt/problems/view/2246
 
 - Contest do Codepit
-  - https://www.codepit.io/#/contest/57e67bc599551a001809f987 (senha: gruprinho)
+  - https://www.codepit.io/#/contest/57e67bc599551a001809f987/view (senha: gruprinho)
 
 - Os slides usados na aula estão na pasta `slides` num arquivo PDF
