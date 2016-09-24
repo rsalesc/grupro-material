@@ -1,0 +1,44 @@
+\documentclass{beamer}
+\usepackage{default}
+
+% Language
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+% Graphics
+\usepackage{svg}
+
+% Code highlighting
+\usepackage[cache=false]{minted}
+
+\newmintedfile[inputcppcode]{c++}{linenos=false,mathescape,tabsize=4,frame=none}
+\newcommand{\inputcpp}[2]{
+\begin{block}{#1}
+    \inputcppcode{codes/#2.cpp}
+\end{block}
+}
+
+\newcommand{\titleslide}[1]{
+    \begin{frame}
+    \begin{center}
+    \Huge #1
+    \end{center}
+    \end{frame}
+}
+
+% Theme
+\usetheme{Warsaw}
+
+
+\begin{document}
+
+\title{Buscas e Caminhos Mínimos em Grafos}
+\subtitle{}
+\author{Roberto Sales}
+\date{}
+\maketitle
+
+\include{1-search}
+\end{document}
