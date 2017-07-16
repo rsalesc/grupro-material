@@ -5,8 +5,8 @@
         - http://codeforces.com/problemset/problem/191/C
         - http://acm.math.spbu.ru/~sk1/mm/lections/mipt2016-sqrt/mipt-2016-burunduk1-sqrt.en.pdf
   
-  * Hashing  
-        - http://www.usaco.org/index.php?page=viewproblem2&cpid=741
+   * Hashing  
+         - http://www.usaco.org/index.php?page=viewproblem2&cpid=741
  
  * Cool Adhocs
         - http://www.usaco.org/index.php?page=viewproblem2&cpid=719
