@@ -3,7 +3,6 @@
         - http://www.usaco.org/index.php?page=viewproblem2&cpid=576
         - http://codeforces.com/problemset/problem/208/E
         - http://codeforces.com/problemset/problem/191/C
-        - http://acm.math.spbu.ru/~sk1/mm/lections/mipt2016-sqrt/mipt-2016-burunduk1-sqrt.en.pdf
   
    * Hashing  
          - http://www.usaco.org/index.php?page=viewproblem2&cpid=741
@@ -28,3 +27,10 @@
  
  * Easy Geometry (Convex Hull) 
       - http://www.usaco.org/index.php?page=viewproblem2&cpid=382
+      - http://olimpiada.ic.unicamp.br/pratique/programacao/nivel2/2015f2p2_macacos
+      
+ * HARD GEOMETRY
+      - https://www.codechef.com/COOK83/problems/ADADET
+  
+ * SQRT Decomp TUTORIAL (Burunduk) 
+      - http://acm.math.spbu.ru/~sk1/mm/lections/mipt2016-sqrt/mipt-2016-burunduk1-sqrt.en.pdf
