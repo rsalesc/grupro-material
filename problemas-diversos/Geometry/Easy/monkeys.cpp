@@ -18,7 +18,7 @@ pii make_vector(pii a , pii b){
 	return mp(b.F - a.F , b.S - a.S);
 }
 int32_t main(){
-	clock_t t = clock();
+	//clock_t t = clock();
 	int n;
 	cin>>n;
 	for(int i = 0;i<n;i++){
@@ -42,5 +42,5 @@ int32_t main(){
 	}
 	cout<<uhull.size();
 
-    cout<<"TIME IS" <<( ( double ) (clock() - t) / CLOCKS_PER_SEC );
+  //  cout<<"TIME IS" <<( ( double ) (clock() - t) / CLOCKS_PER_SEC );
 }
