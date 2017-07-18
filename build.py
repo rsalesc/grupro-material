@@ -87,6 +87,7 @@ print("Removing old categories...")
 
 for category_folder in glob.glob("./Problemas/[A-Z]*/"):
   print(category_folder)
+  # shutil.rmtree(category_folder)
 
 print("Building project...")
 
@@ -136,14 +137,14 @@ for (category, data) in list(categories.items()):
   readme = os.path.join(get_category_folder(category), "README.md")
 
   with open(readme, "w") as f:
-    f.write("### %s\n" % category_name)
+    f.write("## %s\n" % category_name)
     f.write("\n")
 
-    f.write("## Fácil\n".encode("utf-8"))
+    f.write("### Fácil\n".encode("utf-8"))
     dump(f, filter(lambda x: get_difficulty(x) == "Fácil", entries))
 
-    f.write("## Intermediário\n".encode("utf-8"))
+    f.write("### Intermediário\n".encode("utf-8"))
     dump(f, filter(lambda x: get_difficulty(x) == "Intermediário", entries))
 
-    f.write("## Difícil\n".encode("utf-8"))
+    f.write("### Difícil\n".encode("utf-8"))
     dump(f, filter(lambda x: get_difficulty(x) == "Difícil", entries))
