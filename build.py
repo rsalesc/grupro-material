@@ -76,10 +76,10 @@ def dump(f, entries):
   if len(entries) == 0:
     f.write("_Nenhum problema nesta dificuldade._\n")
   else:
-    dump_headers(f, ["#", "Cód.", "Link", "Dicas", "+"])
+    dump_headers(f, ["#", "Cód.", "Link", "Dicas", "Soluções e Discussão"])
 
     for entry in entries:
-      dump_row(f, ["", entry["code"], get_link(entry), get_tips(entry), "[info](../.data/%s)" % get_problem_code_from_desc(entry["desc"])])
+      dump_row(f, ["", entry["code"], get_link(entry), get_tips(entry), "[abrir](../.data/%s)" % get_problem_code_from_desc(entry["desc"])])
   
   f.write("\n")
 
@@ -102,7 +102,7 @@ for desc in descs:
     failed = False
     for req in REQUIRED:
       if req not in data:
-        print("Field %s is required in %s", req, desc)
+        print("Field %s is required in %s" % (req, desc))
         failed = True
 
     if failed:
@@ -127,7 +127,7 @@ for desc in descs:
           "entries": [data]
         }
       else:
-        categories[current_category].append(data)
+        categories[current_category]["entries"].append(data)
 
 for (category, data) in list(categories.items()):
   category_name = data["name"]
