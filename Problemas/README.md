@@ -17,6 +17,10 @@ Note o uso do [Upper Camel Case](https://en.wikipedia.org/wiki/Camel_case) para 
 Se a pasta ainda não existir, você pode criá-la. Faça o maior esforço para encaixar o problema em uma pasta
 que já exista.
 
+### Qual deve ser o padrão da entrada no README.md?
+
+O `README.md` de cada pasta será dividido em categorias: `Fácil`, `Médio` e `Difícil`.
+
 ### E se o problema tiver relação com mais de um tópico?
 
 Faça o máximo possível para decidir um tópico _preponderante_ e adicione o problema na pasta deste tópico,
