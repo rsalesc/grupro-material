@@ -6,6 +6,7 @@ import glob
 import os
 import sys
 import shutil
+import errno
 
 DIFFICULTIES = {
   "easy": "Fácil",
@@ -23,6 +24,18 @@ REQUIRED = [
   "link",
   "category"
 ]
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
+
+def ensure_dir(f):
+    mkdir_p(os.path.dirname(f))
 
 def get_difficulty(entry):
   return DIFFICULTIES[entry["difficulty"]]
@@ -136,6 +149,7 @@ for (category, data) in list(categories.items()):
 
   readme = os.path.join(get_category_folder(category), "README.md")
 
+  ensure_dir(readme)
   with open(readme, "w") as f:
     f.write("## %s\n" % category_name)
     f.write("\n")
