@@ -4,3 +4,5 @@
 *.log
 *.nav
 *.snm
+*.swp
+*.pyc

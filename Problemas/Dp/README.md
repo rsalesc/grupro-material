@@ -6,6 +6,7 @@
 ||3|[USACO '16 Dec Gold 2](http://www.usaco.org/index.php?page=viewproblem2&cpid=670)|-|[abrir](../.data/3)|
 ||4|[USACO '17 Jan Gold 2](http://www.usaco.org/index.php?page=viewproblem2&cpid=694)|-|[abrir](../.data/4)|
 ||5|[USACO '17 Feb Gold 2](http://www.usaco.org/index.php?page=viewproblem2&cpid=718)|-|[abrir](../.data/5)|
+||6|[Odd Sum](http://codeforces.com/problemset/problem/797/B)|-|[abrir](../.data/6)|
 
 ### Intermediário
 _Nenhum problema nesta dificuldade._

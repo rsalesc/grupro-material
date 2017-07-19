@@ -16,7 +16,10 @@ DIFFICULTIES = {
   "intermediario": "Intermediário",
   "medium": "Intermediário",
   "medio": "Intermediário",
-  "dificil": "Difícil"
+  "dificil": "Difícil",
+  "fácil": "Fácil",
+  "intermediário": "Intermediário",
+  "difícil": "Difícil"
 }
 
 REQUIRED = [
@@ -38,7 +41,7 @@ def ensure_dir(f):
     mkdir_p(os.path.dirname(f))
 
 def get_difficulty(entry):
-  return DIFFICULTIES[entry["difficulty"]]
+  return DIFFICULTIES[entry["difficulty"].lower()]
 
 def get_link(entry):
   if "name" not in entry:
@@ -96,69 +99,70 @@ def dump(f, entries):
   
   f.write("\n")
 
-print("Removing old categories...")
+if __name__ == "__main__":
+    print("Removing old categories...")
 
-for category_folder in glob.glob("./Problemas/[A-Z]*/"):
-  print(category_folder)
-  # shutil.rmtree(category_folder)
+    for category_folder in glob.glob("./Problemas/[A-Z]*/"):
+      print(category_folder)
+      # shutil.rmtree(category_folder)
 
-print("Building project...")
+    print("Building project...")
 
-descs = sorted(glob.glob("./Problemas/.data/*/desc.json"), key=lambda x: get_problem_code_from_desc(x))
+    descs = sorted(glob.glob("./Problemas/.data/*/desc.json"), key=lambda x: get_problem_code_from_desc(x))
 
-seen_links = {}
-categories = {}
+    seen_links = {}
+    categories = {}
 
-for desc in descs:
-  with open(desc) as desc_json:
-    data = json.load(desc_json)
-    
-    failed = False
-    for req in REQUIRED:
-      if req not in data:
-        print("Field %s is required in %s" % (req, desc))
-        failed = True
+    for desc in descs:
+      with open(desc) as desc_json:
+        data = json.load(desc_json)
+        
+        failed = False
+        for req in REQUIRED:
+          if req not in data:
+            print("Field %s is required in %s" % (req, desc))
+            failed = True
 
-    if failed:
-      continue
+        if failed:
+          continue
 
-    data["link"] = data["link"].strip()
-    if data["link"] in seen_links:
-      print("Link from %s was already added before at %s", desc, seen_links[data["link"]])
-      continue
-    
-    seen_links[data["link"]] = desc
-  
-    data["desc"] = desc
-    data["code"] = get_problem_code_from_desc(desc)
+        data["link"] = data["link"].strip()
+        if data["link"] in seen_links:
+          print("Link from %s was already added before at %s", desc, seen_links[data["link"]])
+          continue
+        
+        seen_links[data["link"]] = desc
+      
+        data["desc"] = desc
+        data["code"] = get_problem_code_from_desc(desc)
 
-    current_categories = map(get_camel, data["category"]) if isinstance(data["category"], list) else [get_camel(data["category"])]
+        current_categories = map(get_camel, data["category"]) if isinstance(data["category"], list) else [get_camel(data["category"])]
 
-    for current_category in current_categories:
-      if current_category not in categories:
-        categories[current_category] = {
-          "name": get_category_name(data["category"]),
-          "entries": [data]
-        }
-      else:
-        categories[current_category]["entries"].append(data)
+        for current_category in current_categories:
+          if current_category not in categories:
+            categories[current_category] = {
+              "name": get_category_name(data["category"]),
+              "entries": [data]
+            }
+          else:
+            categories[current_category]["entries"].append(data)
 
-for (category, data) in list(categories.items()):
-  category_name = data["name"]
-  entries = data["entries"]
+    for (category, data) in list(categories.items()):
+      category_name = data["name"]
+      entries = data["entries"]
 
-  readme = os.path.join(get_category_folder(category), "README.md")
+      readme = os.path.join(get_category_folder(category), "README.md")
 
-  ensure_dir(readme)
-  with open(readme, "w") as f:
-    f.write("## %s\n" % category_name)
-    f.write("\n")
+      ensure_dir(readme)
+      with open(readme, "w") as f:
+        f.write("## %s\n" % category_name)
+        f.write("\n")
 
-    f.write("### Fácil\n".encode("utf-8"))
-    dump(f, filter(lambda x: get_difficulty(x) == "Fácil", entries))
+        f.write("### Fácil\n".encode("utf-8"))
+        dump(f, filter(lambda x: get_difficulty(x) == "Fácil", entries))
 
-    f.write("### Intermediário\n".encode("utf-8"))
-    dump(f, filter(lambda x: get_difficulty(x) == "Intermediário", entries))
+        f.write("### Intermediário\n".encode("utf-8"))
+        dump(f, filter(lambda x: get_difficulty(x) == "Intermediário", entries))
 
-    f.write("### Difícil\n".encode("utf-8"))
-    dump(f, filter(lambda x: get_difficulty(x) == "Difícil", entries))
+        f.write("### Difícil\n".encode("utf-8"))
+        dump(f, filter(lambda x: get_difficulty(x) == "Difícil", entries))
